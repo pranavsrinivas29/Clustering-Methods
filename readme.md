@@ -126,4 +126,5 @@ pip install numpy pandas scikit-learn matplotlib seaborn scikit-fuzzy
      Rather than a hard “this point is cluster 3,” Fuzzy gives each point a membership vector. By plotting according to its highest‐membership cluster, you see two very strong, well-defined groups (the big black and yellow masses), and a swath of points in the middle that flip-flop membership (they look “dull” because their max-membership scores are lower).  
    - **Good for overlapping segments**  
      If your business problem expects customers to straddle multiple profiles (e.g. those “middle” shoppers who are both moderate wine and beer buyers), fuzzy will flag them naturally rather than forcing a binary yes/no split.
+     
 ![Cluster Plot](fuzzy_c_means.png)
