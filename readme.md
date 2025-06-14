@@ -103,7 +103,7 @@ End-to-end customer segmentation pipeline using clustering techniques on a sampl
 Install dependencies via:
 ```bash
 pip install numpy pandas scikit-learn matplotlib seaborn scikit-fuzzy
-
+```
 
 ## Key Insights
 
