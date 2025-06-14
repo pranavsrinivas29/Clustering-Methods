@@ -103,3 +103,27 @@ End-to-end customer segmentation pipeline using clustering techniques on a sampl
 Install dependencies via:
 ```bash
 pip install numpy pandas scikit-learn matplotlib seaborn scikit-fuzzy
+
+
+## Key Insights
+
+1. **K-Means (k=4)**  
+   - **Compact, roughly spherical clusters**  
+     K-Means has carved the space into four “ball‐like” regions. You can see three large, well-separated blobs (purple on the right, yellow in the middle, black on the left) and one tiny outlier cluster (the few orange points near the center)—it’s basically driving centroids to minimize within-cluster variance.  
+   - **Hard assignments & sensitivity to shape**  
+     Notice that elongated or non-spherical structures get forced into whichever centroid is closest, even if the point really “feels” like it should be with another group.
+![Cluster Plot](kmeans.png)
+
+2. **Agglomerative Clustering (k=4)**  
+   - **More flexible cluster shapes**  
+     By merging points bottom-up, Agglomerative can follow the natural topology a bit better—clusters here wrap around density contours you’d never see with pure K-Means.  
+   - **Greater overlap & chaining**  
+     You’ll also spot more intermixing at the boundaries (lots of orange and black points bleeding into where purple used to dominate), reflecting the fact that hierarchical merges can pull in fringe points if they reduce overall linkage distance.
+![Cluster Plot](agglomerative.png)
+
+3. **Fuzzy C-Means (c=4)**  
+   - **Soft assignments highlight ambiguity**  
+     Rather than a hard “this point is cluster 3,” Fuzzy gives each point a membership vector. By plotting according to its highest‐membership cluster, you see two very strong, well-defined groups (the big black and yellow masses), and a swath of points in the middle that flip-flop membership (they look “dull” because their max-membership scores are lower).  
+   - **Good for overlapping segments**  
+     If your business problem expects customers to straddle multiple profiles (e.g. those “middle” shoppers who are both moderate wine and beer buyers), fuzzy will flag them naturally rather than forcing a binary yes/no split.
+![Cluster Plot](fuzzy_c_means.png)
